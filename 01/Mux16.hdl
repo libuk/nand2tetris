@@ -12,7 +12,6 @@ CHIP Mux16 {
     OUT out[16];
 
     PARTS:
-    //// Replace this comment with your code.
     Not(in=sel, out=notsel);
     And(a=a[0], b=notsel, out=aandnotsel0);
     And(a=sel, b=b[0], out=bandsel0);
@@ -77,5 +76,4 @@ CHIP Mux16 {
     And(a=a[15], b=notsel, out=aandnotsel15);
     And(a=sel, b=b[15], out=bandsel15);
     Or(a=aandnotsel15, b=bandsel15, out=out[15]);
-
 }

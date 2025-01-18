@@ -12,7 +12,6 @@ CHIP Or16 {
     OUT out[16];
 
     PARTS:
-    //// Replace this comment with your code.
     Nand(a=a[0], b=a[0], out=nanda0);
     Nand(a=b[0], b=b[0], out=nandb0);
     Nand(a=nanda0, b=nandb0, out=out[0]);
@@ -76,5 +75,4 @@ CHIP Or16 {
     Nand(a=a[15], b=a[15], out=nanda15);
     Nand(a=b[15], b=b[15], out=nandb15);
     Nand(a=nanda15, b=nandb15, out=out[15]);
-
 }
