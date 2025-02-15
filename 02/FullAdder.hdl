@@ -1,0 +1,29 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/2/FullAdder.hdl
+/**
+ * Computes the sum of three bits.
+ */
+CHIP FullAdder {
+    IN a, b, c;  // 1-bit inputs
+    OUT sum,     // Right bit of a + b + c
+        carry;   // Left bit of a + b + c
+
+    PARTS:
+    //// SUM
+    Not(in=a, out=notA);
+    Xor(a = b, b = c, out = xorBC);
+    And(a=notA, b=xorBC, out=notAandxorBC);
+
+    Not(in=xorBC, out=notxorBC);
+    And(a=a, b=notxorBC, out=aandnotxorBC);
+    Or(a=notAandxorBC, b=aandnotxorBC, out=sum);
+
+    //// CARRY
+    Xor(a = a, b = b, out =xorAB);
+    And(a=xorAB, b=c, out=xorABandC);
+
+    And(a= a, b= b, out= aandb);
+    Or(a=xorABandC, b= aandb, out= carry);
+}
